@@ -219,13 +219,16 @@
             </section>
 
             <p class="has-text-weight-bold">
-               <span class="default-font" style="font-size: 2.05rem;">Method</span>
+               <span class="default-font" style="font-size: 2.05rem;">Abstract</span>
             </p>
 <div style="width: 75%; margin: 0 auto; text-align: left; font-family: 'Times New Roman', Times, serif;">
   <p>
     Recent advances in video diffusion models have driven rapid progress in video editing techniques. However, video object removal, a critical subtask of video editing, remains challenging due to issues such as hallucinated objects and visual artifacts. Furthermore, existing methods often rely on computationally expensive sampling procedures and classifier-free guidance (CFG), resulting in slow inference. To address these limitations, we propose <strong>MiniMax-Remover</strong>, a novel two-stage video object removal approach. Motivated by the observation that text condition is not best suited for this task, we simplify the pretrained video generation model by removing textual input and cross-attention layers, resulting in a more lightweight and efficient model architecture in the first stage. In the second stage, we distilled our remover on successful videos produced by the stage-1 model and curated by human annotators, using a minimax optimization strategy to further improve editing quality and inference speed. Specifically, the inner maximization identifies adversarial input noise (“bad noise”) that makes failure removals, while the outer minimization step trains the model to generate high-quality removal results even under such challenging conditions. As a result, our method achieves a state-of-the-art video object removal results with as few as 6 sampling steps and doesn't rely on CFG, significantly improving inference efficiency. Extensive experiments demonstrate the effectiveness and superiority of MiniMax-Remover compared to existing methods.
   </p>
 </div>
+
+<img src="./imgs/method.PNG" alt="minimax-remover" style="max-width: 75%; height: auto;">
+
             <section class="hero is-small">
                <div class="hero-body">
                   <div class="container">

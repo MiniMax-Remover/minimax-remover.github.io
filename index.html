@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8"/>
+      <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+      <!-- bulma css template -->
+      <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet"/>
+      <!-- ionicons -->
+      <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" type="module"></script>
+      <script nomodule="" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+      <!-- model viewer -->
+      <script src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js" type="module"></script>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+      <script>window.dataLayer = window.dataLayer || [];
+         function gtag() {
+           dataLayer.push(arguments);
+         }
+         
+         gtag('js', new Date());
+         
+         gtag('config', 'G-PYVRSFMDRL');
+      </script>
+      <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet"/>
+      <link href="./static/css/bulma.min.css" rel="stylesheet"/>
+      <link href="https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap" rel="stylesheet"/>
+      <link href="https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap" rel="stylesheet"/>
+      <link href="./static/css/bulma-carousel.min.css" rel="stylesheet"/>
+      <link href="./static/css/bulma-slider.min.css" rel="stylesheet"/>
+      <link href="./static/css/fontawesome.all.min.css" rel="stylesheet"/>
+      <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet"/>
+      <link href="./static/css/index.css" rel="stylesheet"/>
+      <!-- <link rel="icon" href="./static/images/adobe.svg"> -->
+      <link href="./static/images/shooting-star.svg" rel="icon"/>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script defer="" src="./static/js/fontawesome.all.min.js"></script>
+      <script src="./static/js/bulma-carousel.min.js"></script>
+      <script src="./static/js/bulma-slider.min.js"></script>
+      <script src="./static/js/index.js"></script>
+      <title>MiniMax-Remover</title>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&family=Great+Vibes&display=swap'); .dancing-script { font-family: 'Dancing Script', cursive; } .pacifico { font-family: 'Pacifico', cursive; } .great-vibes { font-family: 'Great Vibes', cursive; } .modern-love-grunge { font-family: 'Modern Love Grunge', cursive; } .mystical-woods-rough-script { font-family: 'Mystical Woods Rough Script', cursive; } .script-mt-bold { font-family: 'Script MT Bold', cursive; } .vivaldi { font-family: 'Vivaldi', cursive; } .segoe-print {cursive; font-size: 46px; background: linear-gradient(to right, rgb(0, 159, 255), rgb(236, 47, 75)); -webkit-background-clip: text; color: transparent; } .default-font { font-family: Arial, sans-serif; font-size: 46px; } /* 样式用来布局表格和标签 */ .table-container { display: flex; /* 使用 Flexbox 布局 */ align-items: center; /* 垂直居中对齐 */ } .label-column { width: 70px; /* 标签列的固定宽度 */ padding: 10px; /* 内边距 */ text-align: left; /* 文字右对齐 */ font-weight: bold; /* 加粗 */ } .content-column { flex: 1; /* 剩余空间全部给内容列 */ } table { border-collapse: collapse; /* 合并边框 */ width: 100%; /* 表格宽度100% */ } th, td { border: 0px solid #ccc; /* 边框样式 */ padding: 4px; /* 内边距 */ text-align: left; /* 文字左对齐 */ } .gradient-text { background-image: linear-gradient(to right, rgb(0, 159, 255), rgb(236, 47, 75)); -webkit-background-clip: text; /* 将渐变应用到文字 */ color: transparent; /* 使文字本身透明 */ } .comic-sans-ms { font-family: 'Comic Sans MS', cursive; font-size: 17px} .brush-script-mt { font-family: 'Brush Script MT', cursive; font-size: 17px} .pacifico { font-family: 'Pacifico', cursive; font-size: 17px} .dancing-script { font-family: 'Dancing Script', cursive; font-size: 20px} .indie-flower { font-family: 'Indie Flower', cursive; font-size: 17px} .architects-daughter { font-family: 'Architects Daughter', cursive; font-size: 17px} .caveat { font-family: 'Caveat', cursive; font-size: 17px} .cedarville-cursive { font-family: 'Cedarville Cursive', cursive; font-size: 17px} .handlee { font-family: 'Handlee', cursive; font-size: 17px} .homemade-apple { font-family: 'Homemade Apple', cursive; font-size: 17px} .just-another-hand { font-family: 'Just Another Hand', cursive; font-size: 17px} .kaushan-script { font-family: 'Kaushan Script', cursive; font-size: 17px} .kristi { font-family: 'Kristi', cursive; font-size: 17px} .sacramento { font-family: 'Sacramento', cursive; font-size: 17px} .satisfy { font-family: 'Satisfy', cursive; font-size: 17px}.segoe-print2 { font-family: 'Segoe Print', cursive; src: url('font/segoepr.ttf') format('truetype'); font-size: 17px} .bold { font-weight: bold;.full-width {width: 100%; text-align: center;}</style>
+      <link href="icon.ico" rel="icon"/>
+   </head>
+   <body>
+      <section class="section">
+         <div class="container has-text-centered">
+            <p class="title is-3">
+               <span class="segoe-print"><strong>MiniMax-Remover</strong></span>
+               <span class="default-font">: Taming Bad Noise Helps Video Object Removal</span>
+            </p>
+            <!-- authors -->
+            <p class="title is-5 mt-2">
+               <a href="https://zibojia.github.io/" target="_blank">Bojia Zi</a>
+               <sup>*</sup>,
+               <a href="https://scholar.google.com" target="_blank">Weixuan Peng</a>
+               <sup>*</sup>,
+               <a href="https://scholar.google.com/citations?user=odjSydQAAAAJ&amp;hl=en" target="_blank">Xianbiao Qi</a>
+               <sup>†</sup>,
+               <a href="https://scholar.google.com/citations?user=mt5mvZ8AAAAJ&hl=en" target="_blank">Jianan Wang</a>,
+               <a href="https://shihaozhaozsh.github.io/" target="_blank">Shihao Zhao</a>,
+               <a href="https://scholar.google.com/citations?hl=en&amp;user=Zb5wT08AAAAJ" target="_blank">Rong Xiao</a>,
+               <a href="https://scholar.google.com/citations?hl=en&amp;user=fyMni2cAAAAJ" target="_blank">Kam-Fai Wong</a>
+            </p>
+            <!-- affiliations -->
+            <p class="subtitle is-5">
+               <span style="font-size: 0.95em;">* is equal contribution.</span>
+               <span style="font-size: 0.95em;">† is the corresponding author.</span>
+            </p>
+            <!-- other links -->
+            <div class="button-container" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center;">
+               <button onclick="window.location.href='https://huggingface.co/zibojia/MiniMax-Remover'" style="background-color: transparent; border: none; cursor: pointer;">
+                  <img alt="Youtube" src="https://img.shields.io/badge/🤗%20Huggingface-Model-green.svg" style="height: 28px;"/>
+               </button>
+               <button onclick="window.location.href='https://github.com/zibojia/MiniMax-Remover'" style="background-color: transparent; border: none; cursor: pointer;">
+               <img alt="Github" src="https://img.shields.io/badge/MiniMaxRemover-github-24292e" style="height: 28px;"/></button>
+               <button onclick="window.location.href='https://huggingface.co/spaces/zibojia/MiniMax-Remover'" style="background-color: transparent; border: none; cursor: pointer;">
+               <img alt="Github" src="https://img.shields.io/badge/🤗%20Huggingface-Space-blue" style="height: 28px;"/></button>
+               
+               <button onclick="window.location.href='https://arxiv.org/abs/2505.xxxx'" style="background-color: transparent; border: none; cursor: pointer;">
+               <img alt="MiniMax-Remover arXiv" src="https://img.shields.io/badge/MiniMaxRemover-arXiv-b31b1b" style="height: 28px;"/></button>               
+               <button onclick="window.location.href='https://www.youtube.com/watch?v=xxxxxxx'" style="background-color: transparent; border: none; cursor: pointer;">
+               <img alt="Youtube" src="https://img.shields.io/badge/Youtube-video-FF0000" style="height: 28px;"/>
+               </button>
+            </div>
+            <section class="hero is-small">
+               <div class="hero-body">
+                  <div class="container">
+                     <div class="carousel results-carousel" id="results-carousel" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <div style="display: flex; flex-wrap: wrap; justify-content: flex-start; flex: 1 1 49%;">
+                           <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 98%; margin-bottom: 4px;">
+                              <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                                 <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 108%;">
+                                    <source src="pexels\3044095-hd_1280_720_24fps_outlined_230230250_processed.mp4" type="video/mp4"/>
+                                 </video>
+                              </div>
+                              <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                                 <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 110%;">
+                                    <source src="pexels\3044095-hd_1280_720_24fps_processed.mp4" type="video/mp4"/>
+                                 </video>
+                              </div>
+                           </div>
+                           <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 98%; margin-bottom: 4px;">
+                              <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                                 <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                    <source src="pexels\3191354-hd_1280_720_25fps_outlined_135206235_processed.mp4" type="video/mp4"/>
+                                 </video>
+                              </div>
+                              <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                                 <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                    <source src="pexels\3191354-hd_1280_720_25fps_processed.mp4" type="video/mp4"/>
+                                 </video>
+                              </div>
+                           </div>
+                           <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 98%; margin-bottom: 4px;">
+                              <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                                 <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                    <source src="pexels\8090341-hd_2048_1080_24fps_outlined_2552150_processed.mp4" type="video/mp4"/>
+                                 </video>
+                              </div>
+                              <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                                 <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                    <source src="pexels\8090341-hd_2048_1080_24fps_processed.mp4" type="video/mp4"/>
+                                 </video>
+                              </div>
+                           </div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 49%; margin-bottom: 4px;">
+                           <div style="display: flex; flex-wrap: wrap; justify-content: flex-start; flex: 1 1 100%;">
+                              <div class="item item-palace" style="flex: 1 48%;  margin-left: 0px; margin-top: 0px;">
+                                 <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 98%;">
+                                    <source src="pexels\resized_6540185-hd_1080_1920_24fps_outlined_255253208_processed.mp4" type="video/mp4"/>
+                                 </video>
+                              </div>
+                              <div class="item item-beach-dog" style="flex: 1 1 48%;  margin-left: 1%; margin-top: 0px;">
+                                 <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 98%;">
+                                    <source src="pexels\resized_6540185-hd_1080_1920_24fps_processed.mp4" type="video/mp4"/>
+                                 </video>
+                              </div>
+                           </div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 48%; margin-bottom: 4px;">
+                           <div class="item item-beach-dog" style="flex: 1 1 48%;  margin-right: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\2113120-hd_1280_720_30fps_outlined_230230250_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                           <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\2113120-hd_1280_720_30fps_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 48%; margin-bottom: 4px;">
+                           <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\4207980-hd_2048_1080_24fps_outlined_230230250_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                           <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\4207980-hd_2048_1080_24fps_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                        </div>
+
+
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 48%; margin-bottom: 4px;">
+                           <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\5077482-hd_2048_1080_25fps_outlined_152255152_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                           <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\5077482-hd_2048_1080_25fps_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 48%; margin-bottom: 4px;">
+                           <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\4899815-hd_1280_720_25fps_outlined_152255152_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                           <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\4899815-hd_1280_720_25fps_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 48%; margin-bottom: 4px;">
+                           <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\5029736-hd_1280_720_30fps_outlined_230230250_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                           <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\5029736-hd_1280_720_30fps_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 48%; margin-bottom: 4px;">
+                           <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\7251016-hd_1280_720_25fps_outlined_255253208_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                           <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\7251016-hd_1280_720_25fps_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </section>
+
+            <p class="has-text-weight-bold">
+               <span class="default-font" style="font-size: 2.05rem;">Method</span>
+            </p>
+<div style="width: 75%; margin: 0 auto; text-align: left; font-family: 'Times New Roman', Times, serif;">
+  <p>
+    Recent advances in video diffusion models have driven rapid progress in video editing techniques. However, video object removal, a critical subtask of video editing, remains challenging due to issues such as hallucinated objects and visual artifacts. Furthermore, existing methods often rely on computationally expensive sampling procedures and classifier-free guidance (CFG), resulting in slow inference. To address these limitations, we propose <strong>MiniMax-Remover</strong>, a novel two-stage video object removal approach. Motivated by the observation that text condition is not best suited for this task, we simplify the pretrained video generation model by removing textual input and cross-attention layers, resulting in a more lightweight and efficient model architecture in the first stage. In the second stage, we distilled our remover on successful videos produced by the stage-1 model and curated by human annotators, using a minimax optimization strategy to further improve editing quality and inference speed. Specifically, the inner maximization identifies adversarial input noise (“bad noise”) that makes failure removals, while the outer minimization step trains the model to generate high-quality removal results even under such challenging conditions. As a result, our method achieves a state-of-the-art video object removal results with as few as 6 sampling steps and doesn't rely on CFG, significantly improving inference efficiency. Extensive experiments demonstrate the effectiveness and superiority of MiniMax-Remover compared to existing methods.
+  </p>
+</div>
+            <section class="hero is-small">
+               <div class="hero-body">
+                  <div class="container">
+                     <div class="carousel results-carousel" id="results-carousel" style="display: flex; flex-wrap: wrap; gap: 10px;">
+
+
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 48%; margin-bottom: 4px;">
+                           <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\5268906-hd_1280_720_30fps_outlined_152255152_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                           <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\5268906-hd_1280_720_30fps_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                        </div>
+
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 48%; margin-bottom: 4px;">
+                           <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\5717544-hd_1280_720_25fps_outlined_2552150_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                           <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\5717544-hd_1280_720_25fps_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 48%; margin-bottom: 4px;">
+                           <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\5992739-hd_1280_720_25fps_outlined_230230250_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                           <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\5992739-hd_1280_720_25fps_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 48%; margin-bottom: 4px;">
+                           <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\6065793-hd_1280_720_25fps_outlined_230230250_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                           <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\6065793-hd_1280_720_25fps_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 48%; margin-bottom: 4px;">
+                           <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\6152670-hd_2048_1080_30fps_outlined_135206235_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                           <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\6152670-hd_2048_1080_30fps_output_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 48%; margin-bottom: 4px;">
+                           <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\6159895-hd_1280_720_24fps_outlined_152255152_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                           <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\6159895-hd_1280_720_24fps_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 48%; margin-bottom: 4px;">
+                           <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\6271595-hd_2048_1080_25fps_outlined_000_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                           <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\6271595-hd_2048_1080_25fps_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; flex: 1 1 48%; margin-bottom: 4px;">
+                           <div class="item item-beach-dog" style="flex: 1 1 48%; margin-right: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="beach-dog" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\6286439-hd_1280_720_30fps_outlined_2552150_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                           <div class="item item-palace" style="flex: 1 1 48%; margin-left: 1%; margin-top: 0px;">
+                              <video autoplay="" controls="" id="palace" loop="" muted="" playsinline="" poster="" style="width: 100%;">
+                                 <source src="pexels\6286439-hd_1280_720_30fps_processed.mp4" type="video/mp4"/>
+                              </video>
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </section>
+
+            <div class="card mt-4">
+               <header class="card-header">
+                  <p class="card-header-title">Citation</p>
+               </header>
+               <div class="card-content is-size-5 has-text-left">
+                  <pre>
+<code>@article{zi2025minimax_remover, title={MiniMax-Remover: Taming Bad Noise Helps Video Object Removal}, 
+      author={Bojia Zi and Weixuan Peng, Xianbiao Qi, Jianan Wang, Shihao Zhao, Rong Xiao, Kam-Fai Wong}, 
+      journal={arXiv preprint arXiv:2505.xxxxx}, 
+      year={2025}, 
+}</code></pre>
+               </div>
+            </div>
+         </div>
+      </section>
+   </body>
+</html>
